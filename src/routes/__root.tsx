@@ -10,7 +10,8 @@ export const Route = createRootRoute({
 			<div className="p-2 flex gap-2">
 				<Link to="/mood" className="[&.active]:font-bold">
 					Mood
-				</Link>{" "}
+				</Link>
+				<img src="/logo.svg" alt="Home" className="h-6 w-6" />
 				<Link to="/energy" className="[&.active]:font-bold">
 					Energy
 				</Link>
