@@ -10,104 +10,104 @@
 
 // Import Routes
 
-import { Route as rootRoute } from "./routes/__root";
-import { Route as EnergyImport } from "./routes/energy";
-import { Route as IndexImport } from "./routes/index";
-import { Route as MoodImport } from "./routes/mood";
+import { Route as rootRoute } from './routes/__root'
+import { Route as MoodImport } from './routes/mood'
+import { Route as EnergyImport } from './routes/energy'
+import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
 
 const MoodRoute = MoodImport.update({
-	id: "/mood",
-	path: "/mood",
-	getParentRoute: () => rootRoute,
-} as any);
+  id: '/mood',
+  path: '/mood',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const EnergyRoute = EnergyImport.update({
-	id: "/energy",
-	path: "/energy",
-	getParentRoute: () => rootRoute,
-} as any);
+  id: '/energy',
+  path: '/energy',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const IndexRoute = IndexImport.update({
-	id: "/",
-	path: "/",
-	getParentRoute: () => rootRoute,
-} as any);
+  id: '/',
+  path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
 
 // Populate the FileRoutesByPath interface
 
-declare module "@tanstack/react-router" {
-	interface FileRoutesByPath {
-		"/": {
-			id: "/";
-			path: "/";
-			fullPath: "/";
-			preLoaderRoute: typeof IndexImport;
-			parentRoute: typeof rootRoute;
-		};
-		"/energy": {
-			id: "/energy";
-			path: "/energy";
-			fullPath: "/energy";
-			preLoaderRoute: typeof EnergyImport;
-			parentRoute: typeof rootRoute;
-		};
-		"/mood": {
-			id: "/mood";
-			path: "/mood";
-			fullPath: "/mood";
-			preLoaderRoute: typeof MoodImport;
-			parentRoute: typeof rootRoute;
-		};
-	}
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/energy': {
+      id: '/energy'
+      path: '/energy'
+      fullPath: '/energy'
+      preLoaderRoute: typeof EnergyImport
+      parentRoute: typeof rootRoute
+    }
+    '/mood': {
+      id: '/mood'
+      path: '/mood'
+      fullPath: '/mood'
+      preLoaderRoute: typeof MoodImport
+      parentRoute: typeof rootRoute
+    }
+  }
 }
 
 // Create and export the route tree
 
 export interface FileRoutesByFullPath {
-	"/": typeof IndexRoute;
-	"/energy": typeof EnergyRoute;
-	"/mood": typeof MoodRoute;
+  '/': typeof IndexRoute
+  '/energy': typeof EnergyRoute
+  '/mood': typeof MoodRoute
 }
 
 export interface FileRoutesByTo {
-	"/": typeof IndexRoute;
-	"/energy": typeof EnergyRoute;
-	"/mood": typeof MoodRoute;
+  '/': typeof IndexRoute
+  '/energy': typeof EnergyRoute
+  '/mood': typeof MoodRoute
 }
 
 export interface FileRoutesById {
-	__root__: typeof rootRoute;
-	"/": typeof IndexRoute;
-	"/energy": typeof EnergyRoute;
-	"/mood": typeof MoodRoute;
+  __root__: typeof rootRoute
+  '/': typeof IndexRoute
+  '/energy': typeof EnergyRoute
+  '/mood': typeof MoodRoute
 }
 
 export interface FileRouteTypes {
-	fileRoutesByFullPath: FileRoutesByFullPath;
-	fullPaths: "/" | "/energy" | "/mood";
-	fileRoutesByTo: FileRoutesByTo;
-	to: "/" | "/energy" | "/mood";
-	id: "__root__" | "/" | "/energy" | "/mood";
-	fileRoutesById: FileRoutesById;
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/energy' | '/mood'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/energy' | '/mood'
+  id: '__root__' | '/' | '/energy' | '/mood'
+  fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
-	IndexRoute: typeof IndexRoute;
-	EnergyRoute: typeof EnergyRoute;
-	MoodRoute: typeof MoodRoute;
+  IndexRoute: typeof IndexRoute
+  EnergyRoute: typeof EnergyRoute
+  MoodRoute: typeof MoodRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
-	IndexRoute: IndexRoute,
-	EnergyRoute: EnergyRoute,
-	MoodRoute: MoodRoute,
-};
+  IndexRoute: IndexRoute,
+  EnergyRoute: EnergyRoute,
+  MoodRoute: MoodRoute,
+}
 
 export const routeTree = rootRoute
-	._addFileChildren(rootRouteChildren)
-	._addFileTypes<FileRouteTypes>();
+  ._addFileChildren(rootRouteChildren)
+  ._addFileTypes<FileRouteTypes>()
 
 /* ROUTE_MANIFEST_START
 {
