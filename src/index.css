@@ -1,1 +1,69 @@
 @import "tailwindcss";
+
+@theme {
+    /* Primary Colors */
+    --color-primary-50: oklch(95% 0.07 55);
+    --color-primary-100: oklch(90% 0.08 55);
+    --color-primary-200: oklch(80% 0.09 55);
+    --color-primary-300: oklch(70% 0.10 55);
+    --color-primary-400: oklch(60% 0.11 55);
+    --color-primary-500: oklch(55% 0.13 55); /* #DD6E42 */
+    --color-primary-600: oklch(50% 0.12 55);
+    --color-primary-700: oklch(42% 0.11 55);
+    --color-primary-800: oklch(34% 0.10 55);
+    --color-primary-900: oklch(28% 0.09 55);
+    --color-primary-950: oklch(22% 0.08 55);
+
+    /* Secondary Colors */
+    --color-secondary-50: oklch(98% 0.03 100);
+    --color-secondary-100: oklch(95% 0.035 100);
+    --color-secondary-200: oklch(90% 0.04 100);
+    --color-secondary-300: oklch(85% 0.045 100);
+    --color-secondary-400: oklch(80% 0.05 100);
+    --color-secondary-500: oklch(75% 0.055 100); /* #E8DAB2 */
+    --color-secondary-600: oklch(70% 0.05 100);
+    --color-secondary-700: oklch(60% 0.045 100);
+    --color-secondary-800: oklch(50% 0.04 100);
+    --color-secondary-900: oklch(40% 0.035 100);
+    --color-secondary-950: oklch(30% 0.03 100);
+
+    /* Background Colors */
+    --color-background-50: oklch(92% 0.01 250);
+    --color-background-100: oklch(85% 0.02 250);
+    --color-background-200: oklch(75% 0.03 250);
+    --color-background-300: oklch(65% 0.04 250);
+    --color-background-400: oklch(55% 0.05 250);
+    --color-background-500: oklch(45% 0.06 250); /* #4F6D7A */
+    --color-background-600: oklch(38% 0.055 250);
+    --color-background-700: oklch(30% 0.05 250);
+    --color-background-800: oklch(24% 0.045 250);
+    --color-background-900: oklch(18% 0.04 250);
+    --color-background-950: oklch(12% 0.035 250);
+
+    /* Accent Colors */
+    --color-accent-50: oklch(98% 0.01 230);
+    --color-accent-100: oklch(92% 0.015 230);
+    --color-accent-200: oklch(86% 0.02 230);
+    --color-accent-300: oklch(78% 0.025 230);
+    --color-accent-400: oklch(70% 0.03 230);
+    --color-accent-500: oklch(64% 0.035 230); /* #C0D6DF */
+    --color-accent-600: oklch(58% 0.03 230);
+    --color-accent-700: oklch(50% 0.025 230);
+    --color-accent-800: oklch(42% 0.02 230);
+    --color-accent-900: oklch(34% 0.015 230);
+    --color-accent-950: oklch(26% 0.01 230);
+
+    /* Surface Colors */
+    --color-surface-50: oklch(99% 0 0);
+    --color-surface-100: oklch(97% 0 0);
+    --color-surface-200: oklch(95% 0 0);
+    --color-surface-300: oklch(92% 0 0);
+    --color-surface-400: oklch(88% 0 0);
+    --color-surface-500: oklch(85% 0 0); /* #EAEAEA */
+    --color-surface-600: oklch(80% 0 0);
+    --color-surface-700: oklch(70% 0 0);
+    --color-surface-800: oklch(60% 0 0);
+    --color-surface-900: oklch(50% 0 0);
+    --color-surface-950: oklch(40% 0 0);
+}
+
