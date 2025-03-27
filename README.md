@@ -1,22 +1,16 @@
-# Mood Tracker README
+# 🌈  Mood Tracker WebApp
 
 A simple and intuitive web application to track my daily moods, reflect on emotions, and visualize patterns over time.
 
-Built with
-
-- React
-- ViteJS
-- TailwindCSS
-
-### 🚀 Features
+## 🚀 Features
 
 - Anytime mood and energy tracking
 - Mood and Energy history and visualization
 - Customizable moods
 
-### Screenshots
+## 🖼️ Screenshots
 
-### Installation
+## 📦 Installation
 
 ```shell
 // Install dependencies
@@ -25,3 +19,7 @@ pnpm install
 // Start the development server
 pnpm dev
 ```
+
+## 📄 License
+
+This project is licensed under the MIT License – see the LICENSE file for details.
