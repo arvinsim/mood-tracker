@@ -5,7 +5,7 @@ export const Route = createRootRoute({
 	component: () => {
 		return (
 			<div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-				<div className="bg-white rounded-3xl shadow-lg p-6 w-full max-w-96 min-h-96">
+				<div className="max-h-screen bg-white rounded-3xl shadow-lg p-6 w-full max-w-96">
 					<Outlet />
 
 					{/* Mood and Energy Buttons */}
