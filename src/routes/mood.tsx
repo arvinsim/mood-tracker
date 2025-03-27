@@ -6,8 +6,16 @@ export const Route = createFileRoute("/mood")({
 
 function Mood() {
 	return (
-		<div className="p-2">
-			<div className="text-3xl">How are you feeling today?</div>
-		</div>
+		<>
+			{/* Question */}
+			<div className="text-center text-lg font-semibold mb-4">
+				How are you feeling today?
+			</div>
+
+			{/* Circle Area */}
+			<div className="flex items-center justify-center h-48 mb-6 border rounded-2xl">
+				Moods here
+			</div>
+		</>
 	);
 }
