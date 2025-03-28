@@ -9,7 +9,7 @@ export const Route = createRootRoute({
 					<Outlet />
 
 					{/* Mood and Energy Buttons */}
-					<div className="grid grid-cols-[1fr_auto_1fr] gap-2 items-center">
+					<div className="grid grid-cols-[1fr_auto_1fr] gap-2 items-center py-8">
 						<Link
 							to="/mood"
 							className="py-3 rounded-xl bg-primary-100 font-medium text-center"
