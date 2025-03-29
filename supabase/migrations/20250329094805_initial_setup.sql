@@ -1,8 +1,8 @@
 CREATE TABLE users (
     provider_user_id VARCHAR(255) PRIMARY KEY,
-        provider VARCHAR(50) NOT NULL,  -- "google", "github", etc.
-        first_login_at TIMESTAMP WITH TIME ZONE NOT NULL,
-        last_login_at TIMESTAMP WITH TIME ZONE NOT NULL
+    provider VARCHAR(50) NOT NULL,  -- "google", "github", etc.
+    first_login_at TIMESTAMP WITH TIME ZONE NOT NULL,
+    last_login_at TIMESTAMP WITH TIME ZONE NOT NULL
 );
 
 CREATE TABLE energy_levels (
