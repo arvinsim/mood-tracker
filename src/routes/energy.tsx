@@ -74,6 +74,11 @@ function Energy() {
 		setIsDragging(false);
 	}, []);
 
+	const onClickHandler = useCallback(() => {
+		// Handle the click event here
+		alert(`Energy Level: ${energyLevel}`);
+	}, [energyLevel]);
+
 	useEffect(() => {
 		window.addEventListener("mousemove", handleMouseMove);
 		window.addEventListener("mouseup", handleEnd);
@@ -99,13 +104,13 @@ function Energy() {
 				{/* Energy Container */}
 				<div
 					ref={barRef}
-					className="relative h-64 w-16 rounded-md bg-gray-200 mb-2 cursor-pointer"
+					className="relative h-64 w-16 rounded-xl bg-gray-200 mb-2 cursor-pointer"
 					onMouseDown={handleMouseDown}
 					onTouchStart={handleTouchStart}
 				>
 					{/* Energy Bar */}
 					<div
-						className={`absolute inset-x-0 bottom-0 rounded-md transition-all duration-100 ${barColor}`}
+						className={`absolute inset-x-0 bottom-0 rounded-xl transition-all duration-100 ${barColor}`}
 						style={{
 							height: `${(energyLevel / 5) * 100}%`,
 						}}
@@ -125,6 +130,14 @@ function Energy() {
 				<div className="text-lg font-semibold mt-8">
 					Energy Level: {energyLevel}
 				</div>
+
+				<button
+					type="button"
+					className="mt-4 px-4 py-2 bg-accent-700 text-white rounded"
+					onClick={onClickHandler}
+				>
+					Submit!
+				</button>
 			</div>
 		</>
 	);
