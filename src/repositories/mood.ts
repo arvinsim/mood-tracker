@@ -6,24 +6,13 @@ export interface Mood {
 }
 
 const supabaseClient = createClient(
-	process.env.SUPABASE_URL || "",
-	process.env.SUPABASE_ANON_KEY || "",
+	import.meta.env.VITE_SUPABASE_URL || "",
+	import.meta.env.VITE_SUPABASE_ANON_KEY || "",
 );
 
-export async function getAll(): Promise<Mood[]> {
+export async function getAllMoods(): Promise<Mood[]> {
 	const { data, error } = await supabaseClient.from("moods").select("*");
 
 	if (error) throw error;
 	return data as Mood[];
-}
-
-export async function save(mood: Omit<Mood, "id">): Promise<Mood> {
-	const { data, error } = await supabaseClient
-		.from("moods")
-		.insert(mood)
-		.select()
-		.single();
-
-	if (error) throw error;
-	return data as Mood;
 }
