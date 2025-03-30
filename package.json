@@ -12,8 +12,8 @@
 	"dependencies": {
 		"@supabase/supabase-js": "^2.49.4",
 		"@tailwindcss/vite": "^4.0.17",
+		"@tanstack/react-query": "^5.70.0",
 		"@tanstack/react-router": "^1.114.27",
-		"dotenv": "^16.4.7",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
 		"tailwindcss": "^4.0.17"
