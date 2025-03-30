@@ -6,15 +6,37 @@ VALUES
 ('apple_24680', 'apple', '2025-03-01T09:00:00Z', '2025-03-29T11:30:00Z');
 
 -- Sample data for energy_levels table
-INSERT INTO energy_levels (provider_user_id, timestamp, energy_level, notes)
+INSERT INTO energy_levels (level_value, level_name)
 VALUES
-('google_12345', '2025-03-27T08:00:00Z', 8, 'Morning energy after good sleep'),
-('google_12345', '2025-03-28T14:30:00Z', 4, 'Post-lunch energy dip'),
-('github_67890', '2025-03-28T20:15:00Z', 6, 'Moderate energy in the evening');
+(1, 'Very Low'),
+(2, 'Low'),
+(3, 'Moderate'),
+(4, 'High'),
+(5, 'very High');
+
+-- Sample data for user_energy_levels table
+INSERT INTO user_energy_levels (provider_user_id, energy_level_id, timestamp, notes)
+VALUES
+('google_12345', 1, '2025-03-27T08:00:00Z', 'Feeling exhausted today'),
+('github_67890', 2, '2025-03-28T14:30:00Z', 'Average energy after lunch'),
+('apple_24680', 3, '2025-03-29T07:15:00Z', 'Great energy this morning');
 
 -- Sample data for moods table
-INSERT INTO moods (provider_user_id, timestamp, mood_name, notes)
+INSERT INTO moods (mood_name)
 VALUES
-('google_12345', '2025-03-27T08:00:00Z', 'Happy', 'Started the day with great news'),
-('apple_24680', '2025-03-28T12:00:00Z', 'Focused', 'Deep work session on project'),
-('github_67890', '2025-03-29T09:30:00Z', 'Excited', 'Looking forward to weekend plans');
+('Happy'),
+('Anxious'),
+('Focused'),
+('Sad'),
+('Excited'),
+('Calm'),
+('Frustrated'),
+('Grateful'),
+('Overwhelmed');
+
+-- Sample data for user_moods table
+INSERT INTO user_moods (provider_user_id, mood_id, timestamp, notes)
+VALUES
+('google_12345', 1, '2025-03-27T08:00:00Z', 'Started the day with good news'),
+('github_67890', 2, '2025-03-28T16:45:00Z', 'Deadline approaching'),
+('apple_24680', 3, '2025-03-29T10:30:00Z', 'Deep work session');
