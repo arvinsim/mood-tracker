@@ -3,6 +3,9 @@ import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
+// Load environment variables
+require("dotenv").config();
+
 // Import the generated route tree
 import { routeTree } from "./routeTree.gen";
 
