@@ -1,5 +1,7 @@
+import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { getAllEnergyLevels } from "../repositories/energy";
 
 export const Route = createFileRoute("/energy")({
 	component: Energy,
@@ -93,6 +95,23 @@ function Energy() {
 		};
 	}, [handleMouseMove, handleTouchMove, handleEnd]);
 
+	const { data, isSuccess } = useQuery({
+		queryKey: ["energy_levels"],
+		queryFn: () => {
+			return getAllEnergyLevels();
+		},
+	});
+
+	if (!isSuccess) {
+		return (
+			<div className="text-center text-2xl font-semibold mb-4 py-8">
+				Error: No energy levels found
+			</div>
+		);
+	}
+
+	const energyLevels = data || [];
+
 	return (
 		<>
 			<div className="text-center text-2xl font-semibold mb-4 py-8">
@@ -118,9 +137,9 @@ function Energy() {
 
 					{/* Levels */}
 					<div className="absolute inset-0 flex flex-col justify-between items-center py-2 pointer-events-none">
-						{[5, 4, 3, 2, 1].map((level) => (
-							<div key={level} className="font-bold text-gray-700">
-								{level}
+						{[...energyLevels].reverse().map((level) => (
+							<div key={level.id} className="font-bold text-gray-700">
+								{level.level_value}
 							</div>
 						))}
 					</div>
