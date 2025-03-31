@@ -1,7 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { getAllEnergyLevels } from "../repositories/energy";
+import {
+	getAllEnergyLevels,
+	saveUserEnergyLevel,
+} from "../repositories/energy";
 
 export const Route = createFileRoute("/energy")({
 	component: Energy,
@@ -76,9 +79,18 @@ function Energy() {
 		setIsDragging(false);
 	}, []);
 
-	const onClickHandler = useCallback(() => {
-		// Handle the click event here
-		alert(`Energy Level: ${energyLevel}`);
+	const onClickHandler = useCallback(async () => {
+		// TODO: Hardcoded user id
+		const providerUserId = "google_12345";
+
+		try {
+			// Save the energy level to the database
+			await saveUserEnergyLevel({ providerUserId, energyLevelId: energyLevel });
+			alert(`Energy Level ${energyLevel} saved for user ${providerUserId}`);
+		} catch (error) {
+			// TODO:
+			alert(`ERROR saving Energy Level, ${energyLevel} for ${providerUserId}`);
+		}
 	}, [energyLevel]);
 
 	useEffect(() => {
