@@ -9,6 +9,15 @@ export const Route = createFileRoute("/energy")({
 
 function Energy() {
 	const [energyLevel, setEnergyLevel] = useState(1);
+	const [submissionState, setSubmissionState] = useState<
+		"idle" | "success" | "error"
+	>("idle");
+	const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+	const resetForm = useCallback(() => {
+		setSubmissionState("idle");
+		setErrorMessage(null);
+	}, []);
 
 	const onClickHandler = useCallback(async () => {
 		// TODO: Hardcoded user id
@@ -17,12 +26,57 @@ function Energy() {
 		try {
 			// Save the energy level to the database
 			await saveUserEnergyLevel({ providerUserId, energyLevelId: energyLevel });
-			alert(`Energy Level ${energyLevel} saved for user ${providerUserId}`);
+			setSubmissionState("success");
 		} catch (error) {
-			// TODO:
-			alert(`ERROR saving Energy Level, ${energyLevel} for ${providerUserId}`);
+			setErrorMessage(
+				`Failed to save energy level: ${error instanceof Error ? error.message : "Unknown error"}`,
+			);
 		}
 	}, [energyLevel]);
+
+	if (submissionState === "success") {
+		return (
+			<div className="flex flex-col items-center justify-center py-10">
+				<div className="bg-green-100 border border-green-400 text-green-700 px-8 py-6 rounded mb-6">
+					<h2 className="text-2xl font-bold mb-2">Energy Level Saved!</h2>
+					<p className="mb-4">
+						Your energy level of {energyLevel} has been recorded.
+					</p>
+					<p className="text-sm text-green-600">
+						Thank you for tracking your energy today.
+					</p>
+				</div>
+				<button
+					type="button"
+					className="px-4 py-2 bg-accent-700 text-white rounded"
+					onClick={resetForm}
+				>
+					Track Another Entry
+				</button>
+			</div>
+		);
+	}
+
+	if (submissionState === "error") {
+		return (
+			<div className="flex flex-col items-center justify-center py-10">
+				<div className="bg-red-100 border border-red-400 text-red-700 px-8 py-6 rounded mb-6">
+					<h2 className="text-2xl font-bold mb-2">Something Went Wrong</h2>
+					<p className="mb-4">
+						{errorMessage ||
+							"Failed to save your energy level. Please try again."}
+					</p>
+				</div>
+				<button
+					type="button"
+					className="px-4 py-2 bg-accent-700 text-white rounded"
+					onClick={resetForm}
+				>
+					Try Again
+				</button>
+			</div>
+		);
+	}
 
 	return (
 		<>
