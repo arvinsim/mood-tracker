@@ -12,8 +12,9 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as MoodImport } from './routes/mood'
-import { Route as EnergyImport } from './routes/energy'
 import { Route as IndexImport } from './routes/index'
+import { Route as EnergyIndexImport } from './routes/energy/index'
+import { Route as EnergyChartImport } from './routes/energy/chart'
 
 // Create/Update Routes
 
@@ -23,15 +24,21 @@ const MoodRoute = MoodImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const EnergyRoute = EnergyImport.update({
-  id: '/energy',
-  path: '/energy',
-  getParentRoute: () => rootRoute,
-} as any)
-
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const EnergyIndexRoute = EnergyIndexImport.update({
+  id: '/energy/',
+  path: '/energy/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const EnergyChartRoute = EnergyChartImport.update({
+  id: '/energy/chart',
+  path: '/energy/chart',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -46,18 +53,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/energy': {
-      id: '/energy'
-      path: '/energy'
-      fullPath: '/energy'
-      preLoaderRoute: typeof EnergyImport
-      parentRoute: typeof rootRoute
-    }
     '/mood': {
       id: '/mood'
       path: '/mood'
       fullPath: '/mood'
       preLoaderRoute: typeof MoodImport
+      parentRoute: typeof rootRoute
+    }
+    '/energy/chart': {
+      id: '/energy/chart'
+      path: '/energy/chart'
+      fullPath: '/energy/chart'
+      preLoaderRoute: typeof EnergyChartImport
+      parentRoute: typeof rootRoute
+    }
+    '/energy/': {
+      id: '/energy/'
+      path: '/energy'
+      fullPath: '/energy'
+      preLoaderRoute: typeof EnergyIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -67,42 +81,47 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/energy': typeof EnergyRoute
   '/mood': typeof MoodRoute
+  '/energy/chart': typeof EnergyChartRoute
+  '/energy': typeof EnergyIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/energy': typeof EnergyRoute
   '/mood': typeof MoodRoute
+  '/energy/chart': typeof EnergyChartRoute
+  '/energy': typeof EnergyIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/energy': typeof EnergyRoute
   '/mood': typeof MoodRoute
+  '/energy/chart': typeof EnergyChartRoute
+  '/energy/': typeof EnergyIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/energy' | '/mood'
+  fullPaths: '/' | '/mood' | '/energy/chart' | '/energy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/energy' | '/mood'
-  id: '__root__' | '/' | '/energy' | '/mood'
+  to: '/' | '/mood' | '/energy/chart' | '/energy'
+  id: '__root__' | '/' | '/mood' | '/energy/chart' | '/energy/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  EnergyRoute: typeof EnergyRoute
   MoodRoute: typeof MoodRoute
+  EnergyChartRoute: typeof EnergyChartRoute
+  EnergyIndexRoute: typeof EnergyIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  EnergyRoute: EnergyRoute,
   MoodRoute: MoodRoute,
+  EnergyChartRoute: EnergyChartRoute,
+  EnergyIndexRoute: EnergyIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -116,18 +135,22 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/energy",
-        "/mood"
+        "/mood",
+        "/energy/chart",
+        "/energy/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/energy": {
-      "filePath": "energy.tsx"
-    },
     "/mood": {
       "filePath": "mood.tsx"
+    },
+    "/energy/chart": {
+      "filePath": "energy/chart.tsx"
+    },
+    "/energy/": {
+      "filePath": "energy/index.tsx"
     }
   }
 }
