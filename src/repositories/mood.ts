@@ -16,3 +16,22 @@ export async function getAllMoods(): Promise<Mood[]> {
 	if (error) throw error;
 	return data as Mood[];
 }
+
+export async function saveUserMood({
+	providerUserId,
+	moodId,
+}: {
+	providerUserId: string;
+	moodId: number;
+}): Promise<void> {
+	const { error } = await supabaseClient.from("user_moods").insert([
+		{
+			provider_user_id: providerUserId,
+			mood_id: moodId,
+			timestamp: "now()",
+			notes: "",
+		},
+	]);
+
+	if (error) throw error;
+}
