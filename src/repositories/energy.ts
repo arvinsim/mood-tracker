@@ -19,3 +19,22 @@ export async function getAllEnergyLevels(): Promise<EnergyLevels[]> {
 	if (error) throw error;
 	return data as EnergyLevels[];
 }
+
+export async function saveUserEnergyLevel({
+	providerUserId,
+	energyLevelId,
+}: {
+	providerUserId: string;
+	energyLevelId: number;
+}): Promise<void> {
+	const { error } = await supabaseClient.from("user_energy_levels").insert([
+		{
+			provider_user_id: providerUserId,
+			energy_level_id: energyLevelId,
+			timestamp: "now()",
+			notes: "",
+		},
+	]);
+
+	if (error) throw error;
+}
