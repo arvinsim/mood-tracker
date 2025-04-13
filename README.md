@@ -23,3 +23,22 @@ pnpm dev
 ## 📄 License
 
 This project is licensed under the MIT License – see the LICENSE file for details.
+
+## Database
+
+```shell
+// Start the database
+pnpm supabase start
+```
+
+```shell
+// Start the database
+pnpm supabase stop
+```
+
+## Typescript
+
+```shell
+// Generate yypes
+npx supabase gen types typescript --local > database.types.ts
+```
