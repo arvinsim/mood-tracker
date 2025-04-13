@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useState } from "react";
-import { EnergySlider } from "../components/EnergySlider";
-import { saveUserEnergyLevel } from "../repositories/energy";
+import { EnergySlider } from "../../components/EnergySlider";
+import { saveUserEnergyLevel } from "../../repositories/energy";
 
-export const Route = createFileRoute("/energy")({
+export const Route = createFileRoute("/energy/")({
 	component: Energy,
 });
 
